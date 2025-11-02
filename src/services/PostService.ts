@@ -4,7 +4,8 @@ import type {IPost} from "../models/IPost.ts";
 
 export const postApi = createApi({
     reducerPath: 'postAPI',
-    baseQuery: fetchBaseQuery({baseUrl: 'https://jsonplaceholder.typicode.com'}),
+    baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:3000'}),
+    tagTypes: ['Post'],
     endpoints: (build) => ({
         fetchAllPosts: build.query<IPost[], number>({
             query: (limit: number = 5) =>({
@@ -12,7 +13,16 @@ export const postApi = createApi({
                 params: {
                     _limit: limit
                 }
-            })
+            }),
+            providesTags: result => ['Post']
+        }),
+        createPost: build.mutation<IPost, IPost>({
+            query: (post: IPost) => ({
+                url: 'posts',
+                method: 'POST',
+                body: post
+            }),
+            invalidatesTags: ['Post']
         })
     })
 })
