@@ -2,80 +2,35 @@
   "posts": [
     {
       "id": "1",
-      "title": "a title",
-      "body": "100"
-    },
-    {
-      "id": "3",
-      "title": "a title",
-      "body": "100"
-    },
-    {
-      "id": "4",
-      "title": "a title",
-      "body": "100"
-    },
-    {
-      "id": "5",
-      "title": "a title",
-      "body": "100"
-    },
-    {
-      "id": "6",
-      "title": "a title",
-      "body": "100"
-    },
-    {
-      "id": "7",
-      "title": "a title",
-      "body": "100"
-    },
-    {
-      "id": "8",
-      "title": "a title",
-      "body": "100"
+      "body": "My new post",
+      "title": "updated post title"
     },
     {
       "id": "2",
-      "title": "another title",
-      "body": "200"
+      "body": "My new post",
+      "title": "updated post title"
     },
     {
-      "id": 1762108424936,
-      "title": "adsadsad",
-      "body": "body of a new post"
+      "id": "3",
+      "body": "My new post",
+      "title": "updated post title"
     },
     {
-      "id": 1762108471683,
-      "title": "My new post",
-      "body": "body of a new post"
-    },
-    {
-      "id": 1762108540322,
-      "title": "Another post",
-      "body": "body of a new post"
-    },
-    {
-      "id": 1762108567695,
-      "title": "new post",
-      "body": "body of a new post"
-    },
-    {
-      "id": 1762109382576,
-      "title": "asdasd",
-      "body": "body of a new post"
+      "id": "4",
+      "body": "My new post",
+      "title": "updated post title"
     }
   ],
   "comments": [
     {
       "id": "1",
       "text": "a comment about post 1",
-      "postId": "1"
+      "postId": null
     },
     {
       "id": "2",
       "text": "another comment about post 1",
-      "postId": "1"
+      "postId": null
     }
   ],
   "profile": {

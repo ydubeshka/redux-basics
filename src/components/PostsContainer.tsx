@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {postApi} from "../services/PostService.ts";
 import PostItem from "./PostItem.tsx";
+import type {IPost} from "../models/IPost.ts";
 
 const PostsContainer: React.FC = () => {
     const [limit, setLimit] = useState(100);
@@ -9,12 +10,23 @@ const PostsContainer: React.FC = () => {
         // pollingInterval: 10000
     })
 
-    const [createPost, {}] = postApi.useCreatePostMutation()
+    const [ createPost, {} ] = postApi.useCreatePostMutation()
+    const [deletePost, {}] = postApi.useDelePostMutation()
+    const [updatePost, {}] = postApi.useUpdatePostMutation()
+
 
 
     const handleCreate = async () => {
         const title = prompt() || 'new post title'
-        await createPost({id: Date.now(), title: title, body: "body of a new post"});
+        await createPost({body: title, title} as IPost);
+    }
+
+    const handleRemove = (post: IPost) => {
+        deletePost(post)
+    }
+
+    const handleUpdate = (post: IPost) => {
+        updatePost(post)
     }
     return (
         <div>
@@ -22,7 +34,7 @@ const PostsContainer: React.FC = () => {
             {isLoading && <h1>Loading</h1>}
             {error && <h1>Error</h1>}
             {posts &&posts.map(post =>
-                <PostItem  key={post.id} post = {post}/>
+                <PostItem  key={post.id} post = {post} remove={handleRemove} update={handleUpdate}/>
             )}
         </div>
     );

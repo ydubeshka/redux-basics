@@ -23,6 +23,22 @@ export const postApi = createApi({
                 body: post
             }),
             invalidatesTags: ['Post']
-        })
+        }),
+        updatePost: build.mutation<IPost, IPost>({
+            query: (post: IPost) => ({
+                url: `posts/${post.id}`,
+                method: 'PUT',
+                body: post
+            }),
+            invalidatesTags: ['Post']
+        }),
+        delePost: build.mutation<IPost, IPost>({
+            query: (post: IPost) => ({
+                url: `posts/${post.id}`,
+                method: 'DELETE'
+            }),
+            invalidatesTags: ['Post']
+        }),
+
     })
 })
