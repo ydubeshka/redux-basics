@@ -1,9 +1,17 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {postApi} from "../services/PostService.ts";
 import PostItem from "./PostItem.tsx";
 
 const PostsContainer: React.FC = () => {
-    const {data: posts, isLoading, error} = postApi.useFetchAllPostsQuery(5)
+    const [limit, setLimit] = useState(10);
+
+    const {data: posts, isLoading, error, refetch} = postApi.useFetchAllPostsQuery(limit, {
+        pollingInterval: 10000
+    })
+
+    useEffect(()=> {
+        setTimeout(()=> setLimit(3), 3000);
+    }, [])
     return (
         <div>
             {isLoading && <h1>Loading</h1>}
